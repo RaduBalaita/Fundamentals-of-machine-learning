@@ -54,7 +54,7 @@ Develop machine learning models to predict the age of individuals based on their
 *   **Core:** Python, Pandas, NumPy, Jupyter Notebook
 *   **Machine Learning:** Scikit-learn (Linear Regression, Ridge Regression, Random Forest, GridSearchCV, KFold)
 *   **Data Visualization:** Matplotlib, Seaborn, PCA
-*   **GPU Acceleration (Optional):** PyTorch, CuPy (if compatible with Random Forest implementation)
+*   **GPU Acceleration:** PyTorch, CuPy
 
 ---
 
