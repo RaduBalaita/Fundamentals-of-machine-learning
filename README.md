@@ -1,80 +1,68 @@
-# WiDS Datathon 2025: Brain Age Prediction from fMRI Connectomes
+# WiDS Datathon++ University Challenge: Predicting Age from Brain Networks
 
 [![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange)](WIDS.ipynb)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue)](https://www.python.org/)
+[![Python 3](https://img.shields.io/badge/Python-3-blue)](https://www.python.org/)
 
-**Repository for WiDS Datathon++ University Challenge 2025** - Predicting age from functional brain networks to analyze neurodevelopmental differences between sexes. Combines neuroimaging analysis with machine learning to advance understanding of mental health disorders.
+**This repository contains the project completed for the WiDS Datathon++ University Challenge, focusing on predicting age from functional brain networks (connectomes) derived from fMRI data.** The challenge, developed in collaboration with the Ann S. Bowers Women's Brain Health Initiative (WBHI), Cornell University, and UC Santa Barbara, aims to contribute to research on neuropsychiatric disorders and their development across genders.
 
----
-
-## 🌟 Project Overview
-
-**Challenge**: "How do brain networks develop differently across males and females in adolescence?"  
-**Approach**:  
-- Predict biological age from 2D functional connectivity matrices (fMRI)  
-- Compare model performance between male/female subgroups  
-- Analyze feature importance in age prediction  
-
-**Social Impact**: Improve early detection of neuropsychiatric disorders (anxiety, depression, ADHD) through better understanding of sex-specific brain development patterns.
+**Dataset:** The datasets used for this challenge are provided by the Healthy Brain Network (HBN) initiative and can be found on Kaggle: [WiDS Datathon 2025 University Challenge](https://www.kaggle.com/competitions/widsdatathon2025-university/data).
 
 ---
 
-## 🧠 Dataset & Context
-[![Kaggle Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF)](https://www.kaggle.com/competitions/widsdatathon2025-university/data)
+## 🧠 Challenge Overview
 
-**Healthy Brain Network (HBN) Dataset Features**:
-- Resting-state fMRI connectomes (functional brain networks)
-- Demographic data: age, sex, BMI, ethnicity
-- Behavioral metrics: p-factor, internalizing/externalizing scores
-- 1,104 training samples | 474 test samples
+### **Objective**
+Develop machine learning models to predict the age of individuals based on their 2-dimensional functional brain networks (connectomes) derived from resting-state fMRI recordings. Subsequently, explore the models to analyze factors influencing prediction accuracy for males and females separately, offering insights into developmental differences in brain networks.
 
----
+### **Key Tasks**
 
-## 🔍 Analysis Highlights
+1. **Data Preprocessing:**
+    *   Handle missing values in categorical columns by imputing with "Unknown".
+    *   Impute missing values in numerical columns using the mean.
+    *   Convert categorical columns to string type.
+    *   One-hot encode categorical features.
+    *   Scale numerical features using `StandardScaler`.
 
-### **Exploratory Data Analysis**
-- Demographic distribution analysis (age, sex, ethnicity)
-- Correlation matrix of numerical features
-- Box plots of behavioral metrics vs age
-- Missing value imputation (SimpleImputer)
+2. **Model Development:**
+    *   Implement and evaluate the following regression models:
+        *   **Linear Regression:** A simple baseline model.
+        *   **Ridge Regression:** Linear regression with L2 regularization to prevent overfitting.
+        *   **Random Forest Regressor:** An ensemble learning method for improved accuracy and robustness.
 
-### **Feature Engineering**
-- Functional connectivity matrix processing
-- Statistical feature extraction from connectomes
-- Handling dataset imbalance (SMOTE)
+3. **Hyperparameter Tuning:**
+    *   Optimize the Random Forest model using `GridSearchCV` with a reduced parameter grid for faster execution.
 
-### **Model Development**
-- Baseline regression models (Linear, Ridge)
-- Advanced techniques: Random Forests, MLP, XGBoost
-- Temporal feature integration with CNNs
+4. **Model Evaluation:**
+    *   Assess model performance using Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and R-squared.
+    *   Utilize K-Fold cross-validation to evaluate model stability and generalization.
 
-### **Interpretation**
-- SHAP values for model explainability
-- Sex-specific feature importance analysis
-- Brain network visualization (matplotlib/seaborn)
+5. **Feature Importance Analysis:**
+    *   Visualize the top 10 most important features based on the Random Forest model.
+    *   Use Principal Component Analysis (PCA) for dimensionality reduction and visualization of high-dimensional data.
 
----
+### **Discussion Questions**
 
-## 🛠️ Tech Stack
-- **Core**: Python, Pandas, NumPy  
-- **ML**: Scikit-learn, XGBoost, PyTorch  
-- **Visualization**: Matplotlib, Seaborn, Plotly  
-- **Neuro**: NiLearn, nilearn  
-- **Optimization**: Optuna, Hyperopt  
+*   How do the prediction models perform on different age groups or developmental stages?
+*   Are there specific brain regions or connections that are more predictive of age in males vs. females?
+*   Can we identify any patterns or anomalies in the data that might be indicative of neuropsychiatric disorders?
+*   How do the different preprocessing techniques impact model performance?
 
 ---
 
-## 📈 Key Insights
-1. **Sex Differences**: Identified 12% higher RMSE in female predictions using baseline models  
-2. **Key Features**: Default Mode Network connectivity showed strongest age correlation (r=0.62)  
-3. **Model Performance**: XGBoost achieved best results (RMSE=1.23 years) with feature selection  
-4. **Bias Analysis**: Ethnicity showed minimal impact compared to neuroimaging features  
+## 🛠️ Tools & Technologies
+
+*   **Core:** Python, Pandas, NumPy, Jupyter Notebook
+*   **Machine Learning:** Scikit-learn (Linear Regression, Ridge Regression, Random Forest, GridSearchCV, KFold)
+*   **Data Visualization:** Matplotlib, Seaborn, PCA
+*   **GPU Acceleration (Optional):** PyTorch, CuPy (if compatible with Random Forest implementation)
 
 ---
 
-## 🚀 Getting Started
+## 📚 Key Learnings
 
-1. **Environment Setup**:
-```bash
-conda create -n wids python=3.10
-conda install pandas numpy scikit-learn matplotlib seaborn
+1. **Data Preprocessing:** Implemented techniques for handling missing values, categorical feature encoding, and feature scaling.
+2. **Regression Modeling:** Developed and evaluated different regression models for age prediction.
+3. **Hyperparameter Tuning:** Utilized `GridSearchCV` to find the optimal hyperparameters for the Random Forest model.
+4. **Model Evaluation:** Employed cross-validation and various metrics (RMSE, MAE, R-squared) to assess model performance.
+5. **Feature Importance:** Gained insights into the most important features driving model predictions through visualization techniques.
+6. **High-Dimensional Data Analysis:** Applied PCA for dimensionality reduction and visualization.
